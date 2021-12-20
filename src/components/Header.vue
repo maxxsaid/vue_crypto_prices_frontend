@@ -3,36 +3,16 @@
     <b-navbar>
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <img
-            src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-            alt="Lightweight UI components for Vue.js based on Bulma"
-          />
+          <h1 id="title">curren<span>see</span></h1>
         </b-navbar-item>
       </template>
-      <template slot="start">
-        <b-navbar-item href="#">
-          <router-link to="/">Home</router-link>
-        </b-navbar-item>
-        <b-navbar-item href="#">
-          <router-link to="/Page2">About</router-link>
-        </b-navbar-item>
-        <b-navbar-dropdown label="Info">
-          <b-navbar-item href="#">
-            About
-          </b-navbar-item>
-          <b-navbar-item href="#">
-            Contact
-          </b-navbar-item>
-        </b-navbar-dropdown>
-      </template>
-
       <template slot="end">
         <b-navbar-item tag="div">
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="button is-primary" href="/signup">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-light">
+            <a class="button is-light" href="/login">
               Log in
             </a>
           </div>
@@ -50,8 +30,7 @@ export default {
 
 <style>
 .header {
-    width: 90%;
-    margin: 10px auto
+  width: 90%;
+  margin: 10px auto;
 }
-
 </style>
