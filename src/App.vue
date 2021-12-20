@@ -140,7 +140,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
         },
-        body: user,
+        body: JSON.stringify(user),
       })
         .then((response) => response.json())
         .then((data) => {
