@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Header />
-
     <div id="nologin" v-if="!loggedin">
       <div id="loginform">
         <form v-on:submit.prevent="handleLogin">
@@ -36,6 +35,7 @@
     </div>
     <div id="login" v-if="loggedin">
       <div id="forms">
+        <Coin />
         <article>
           <h1>New Coin</h1>
           <input type="text" v-model="newCoin" />
@@ -51,7 +51,9 @@
       </div>
       <div id="coins">
         <div class="coin" v-for="coin of coins" :key="coin.id">
+
           <Coin v-bind:ticker="coin.ticker" />
+
           <button v-bind:id="coin.id" v-on:click="deleteCoin">delete</button>
           <button v-bind:id="coin.id" v-on:click="editSelect">update</button>
         </div>
@@ -63,13 +65,15 @@
 </template>
 
 <script>
-// import Header from './components/Header'
-// import Footer from './components/Footer'
-import Coin from './components/Coin'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Coin from "./components/Coin";
 export default {
   name: "App",
   components: {
-    Coin
+    Header,
+    Coin,
+    Footer,
   },
   data: function() {
     return {
