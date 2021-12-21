@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <Header />
-
     <div id="nologin" v-if="!loggedin">
-    <Coin />
       <div id="loginform">
         <form v-on:submit.prevent="handleLogin">
           <fieldset>
@@ -37,6 +35,7 @@
     </div>
     <div id="login" v-if="loggedin">
       <div id="forms">
+        <Coin />
         <article>
           <h1>New Coin</h1>
           <input type="text" v-model="newCoin" />
@@ -53,7 +52,9 @@
       <div id="coins">
         <div class="coin" v-for="coin of coins" :key="coin.id">
           <h1>{{ coin.ticker }}</h1>
-          <router-link :to="{ name: 'coin', params: coin.ticker}">User</router-link>
+          <router-link :to="{ name: 'coin', params: coin.ticker }"
+            >User</router-link
+          >
           <button v-bind:id="coin.id" v-on:click="deleteCoin">delete</button>
           <button v-bind:id="coin.id" v-on:click="editSelect">update</button>
         </div>
@@ -65,13 +66,15 @@
 </template>
 
 <script>
-// import Header from './components/Header'
-// import Footer from './components/Footer'
-import Coin from './components/Coin'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Coin from "./components/Coin";
 export default {
   name: "App",
   components: {
-    Coin
+    Header,
+    Coin,
+    Footer,
   },
   data: function() {
     return {
@@ -173,7 +176,7 @@ export default {
           Authorization: `bearer ${this.token}`,
         },
         body: JSON.stringify(coin),
-      }).then((response) => {
+      }).then(() => {
         this.newCoin = "";
         this.getCoins();
       });
@@ -186,7 +189,7 @@ export default {
         headers: {
           Authorization: `bearer ${this.token}`,
         },
-      }).then((response) => {
+      }).then(() => {
         this.getCoins();
       });
     },
@@ -201,7 +204,7 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updated),
-      }).then((response) => {
+      }).then(() => {
         this.getCoins();
       });
     },
