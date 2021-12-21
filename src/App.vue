@@ -171,7 +171,7 @@ export default {
           Authorization: `bearer ${this.token}`,
         },
         body: JSON.stringify(coin),
-      }).then((response) => {
+      }).then(() => {
         this.newCoin = "";
         this.getCoins();
       });
@@ -184,7 +184,7 @@ export default {
         headers: {
           Authorization: `bearer ${this.token}`,
         },
-      }).then((response) => {
+      }).then(() => {
         this.getCoins();
       });
     },
@@ -199,7 +199,7 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updated),
-      }).then((response) => {
+      }).then(() => {
         this.getCoins();
       });
     },
