@@ -51,10 +51,9 @@
       </div>
       <div id="coins">
         <div class="coin" v-for="coin of coins" :key="coin.id">
-          <h1>{{ coin.ticker }}</h1>
-          <router-link :to="{ name: 'coin', params: coin.ticker }"
-            >User</router-link
-          >
+
+          <Coin v-bind:ticker="coin.ticker" />
+
           <button v-bind:id="coin.id" v-on:click="deleteCoin">delete</button>
           <button v-bind:id="coin.id" v-on:click="editSelect">update</button>
         </div>
@@ -214,7 +213,7 @@ export default {
         return coin.id == this.editID;
       });
       this.updateCoin = theCoin.ticker;
-    },
+    }
   },
   created: function() {
     const getLogin = JSON.parse(window.sessionStorage.getItem("login"));
