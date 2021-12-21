@@ -3,6 +3,7 @@
     <Header />
 
     <div id="nologin" v-if="!loggedin">
+    <Coin />
       <div id="loginform">
         <form v-on:submit.prevent="handleLogin">
           <fieldset>
@@ -51,7 +52,8 @@
       </div>
       <div id="coins">
         <div class="coin" v-for="coin of coins" :key="coin.id">
-          <h1>{{ coin.ticket }}</h1>
+          <h1>{{ coin.ticker }}</h1>
+          <router-link :to="{ name: 'coin', params: coin.ticker}">User</router-link>
           <button v-bind:id="coin.id" v-on:click="deleteCoin">delete</button>
           <button v-bind:id="coin.id" v-on:click="editSelect">update</button>
         </div>
@@ -63,13 +65,13 @@
 </template>
 
 <script>
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Header from './components/Header'
+// import Footer from './components/Footer'
+import Coin from './components/Coin'
 export default {
   name: "App",
   components: {
-    Header,
-    Footer,
+    Coin
   },
   data: function() {
     return {
@@ -171,7 +173,7 @@ export default {
           Authorization: `bearer ${this.token}`,
         },
         body: JSON.stringify(coin),
-      }).then(() => {
+      }).then((response) => {
         this.newCoin = "";
         this.getCoins();
       });
@@ -184,7 +186,7 @@ export default {
         headers: {
           Authorization: `bearer ${this.token}`,
         },
-      }).then(() => {
+      }).then((response) => {
         this.getCoins();
       });
     },
@@ -199,7 +201,7 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updated),
-      }).then(() => {
+      }).then((response) => {
         this.getCoins();
       });
     },
