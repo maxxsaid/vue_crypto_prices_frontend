@@ -1,12 +1,8 @@
 <template>
-  <div class="header">
-    <b-navbar>
-      <template slot="brand">
-        <b-navbar-item tag="router-link" :to="{ path: '/' }">
-          <h1 id="title">curren<span>see</span></h1>
-        </b-navbar-item>
-      </template>
-    </b-navbar>
+  <div id="title">
+    <a href="/">
+      <h1 id="title">curen<span>see</span></h1>
+    </a>
   </div>
 </template>
 
@@ -15,10 +11,3 @@ export default {
   name: "Header",
 };
 </script>
-
-<style>
-.header {
-  width: 90%;
-  margin: 10px auto;
-}
-</style>
