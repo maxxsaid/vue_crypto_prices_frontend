@@ -35,7 +35,6 @@
     </div>
     <div id="login" v-if="loggedin">
       <div id="forms">
-        <Coin />
         <article>
           <h1>New Coin</h1>
           <input type="text" v-model="newCoin" />
@@ -51,9 +50,7 @@
       </div>
       <div id="coins">
         <div class="coin" v-for="coin of coins" :key="coin.id">
-
           <Coin v-bind:ticker="coin.ticker" />
-
           <button v-bind:id="coin.id" v-on:click="deleteCoin">delete</button>
           <button v-bind:id="coin.id" v-on:click="editSelect">update</button>
         </div>
@@ -213,7 +210,7 @@ export default {
         return coin.id == this.editID;
       });
       this.updateCoin = theCoin.ticker;
-    }
+    },
   },
   created: function() {
     const getLogin = JSON.parse(window.sessionStorage.getItem("login"));
