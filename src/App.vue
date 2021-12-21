@@ -1,13 +1,7 @@
 <template>
-  <!-- <div id="app">
-    <div id="nav">
-      <Header />
-    </div>
-    <router-view />
-    <Footer />
-  </div> -->
   <div id="app">
-    <h1 id="title">mq<span>Coins</span></h1>
+    <Header />
+
     <div id="nologin" v-if="!loggedin">
       <div id="loginform">
         <form v-on:submit.prevent="handleLogin">
@@ -64,18 +58,19 @@
       </div>
       <button v-on:click="handleLogout" id="logout">logout</button>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
-// import Header from './components/Header'
-// import Footer from './components/Footer'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 export default {
   name: "App",
-  // components: {
-  //   Header,
-  //   Footer
-  // }
+  components: {
+    Header,
+    Footer,
+  },
   data: function() {
     return {
       loggedin: false,
@@ -176,7 +171,7 @@ export default {
           Authorization: `bearer ${this.token}`,
         },
         body: JSON.stringify(coin),
-      }).then((response) => {
+      }).then(() => {
         this.newCoin = "";
         this.getCoins();
       });
@@ -189,7 +184,7 @@ export default {
         headers: {
           Authorization: `bearer ${this.token}`,
         },
-      }).then((response) => {
+      }).then(() => {
         this.getCoins();
       });
     },
@@ -204,7 +199,7 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updated),
-      }).then((response) => {
+      }).then(() => {
         this.getCoins();
       });
     },
@@ -235,7 +230,7 @@ export default {
   font-size: 4em;
 }
 #title span {
-  color: aqua;
+  color: rgb(155, 76, 202);
 }
 #loginform {
   display: flex;
