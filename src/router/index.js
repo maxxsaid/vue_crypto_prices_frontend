@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Page2 from '../views/Page2.vue'
+import Coin from '../components/Coin'
 
 Vue.use(VueRouter)
 
@@ -10,6 +11,11 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/coin/:ticker',
+    name: 'price',
+    component: Coin
   },
   {
     path: '/page2',

@@ -9,6 +9,7 @@
   <div id="app">
     <h1 id="title">mq<span>Coins</span></h1>
     <div id="nologin" v-if="!loggedin">
+    <Coin />
       <div id="loginform">
         <form v-on:submit.prevent="handleLogin">
           <fieldset>
@@ -57,7 +58,8 @@
       </div>
       <div id="coins">
         <div class="coin" v-for="coin of coins" :key="coin.id">
-          <h1>{{ coin.ticket }}</h1>
+          <h1>{{ coin.ticker }}</h1>
+          <router-link :to="{ name: 'coin', params: coin.ticker}">User</router-link>
           <button v-bind:id="coin.id" v-on:click="deleteCoin">delete</button>
           <button v-bind:id="coin.id" v-on:click="editSelect">update</button>
         </div>
@@ -70,12 +72,12 @@
 <script>
 // import Header from './components/Header'
 // import Footer from './components/Footer'
+import Coin from './components/Coin'
 export default {
   name: "App",
-  // components: {
-  //   Header,
-  //   Footer
-  // }
+  components: {
+    Coin
+  },
   data: function() {
     return {
       loggedin: false,
