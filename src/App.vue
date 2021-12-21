@@ -209,9 +209,6 @@ export default {
         return coin.id == this.editID;
       });
       this.updateCoin = theCoin.ticker;
-    },
-    getCoinData: function() {
-      return (<h1>Hello</h1>)
     }
   },
   created: function() {
