@@ -1,7 +1,8 @@
 <template>
   <div>
     <p>{{ this.$attrs.ticker }}</p>
-    <p>${{ Math.floor(coin.rate) }} {{ coin.asset_id_quote }}</p>
+    <p v-if="coin.rate > 1">${{ coin.rate.toFixed(2) }} {{ coin.asset_id_quote }}</p>
+    <p v-else>${{ coin.rate.toFixed(5) }} {{ coin.asset_id_quote }}</p>
   </div>
 </template>
 
@@ -18,14 +19,26 @@ export default {
 
   mounted() {
     var ticker = this.$attrs.ticker;
+    var apis = [
+        'FDDC9085-A4CF-4358-A7B0-766E21BDD355',
+        'FDF09546-EED0-4FE8-A640-5F1E57F639ED',
+        'BCAF9E81-1287-45AA-A60C-6F2567001353', 
+        'BCAF9E81-1287-45AA-A60C-6F2567001353',
+        '2B1744AE-30E2-4FB1-9A60-965DCC09DD36',
+        'E8417C59-5614-4131-B05D-1F8C954AE3E7',
+        'BA76A633-8E74-457A-831C-BABCC55E9D49',
+        'B1D929A5-CD16-4BB1-870C-AD15D45CA8FC',
+        '7CC5348C-4060-4852-8435-06B79001DD78'
+        ]
+    var ranNum = Math.floor(Math.random() * apis.length)
+    var ranAPI = apis[ranNum]
     Vue.axios
       .get(
-        `http://rest-sandbox.coinapi.io/v1/exchangerate/${ticker}/USD?apikey=FDDC9085-A4CF-4358-A7B0-766E21BDD355`
+        `http://rest-sandbox.coinapi.io/v1/exchangerate/${ticker}/USD?apikey=${ranAPI}`
       )
 
       .then((response) => {
         this.coin = response.data;
-        console.log(JSON.stringify(response.data));
       });
   },
 };

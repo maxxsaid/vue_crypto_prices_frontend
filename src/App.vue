@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+    <div id='modal-bg'>
+            <div id='modalBox'>
+              <font-awesome-icon id='close' :icon="['fas', 'times']" size='lg' />
+              <div id='currenciesTitle'>Currently supported currencies:</div>
+              <Currencies />
+            </div>
+        </div>
     <Header />
     <div id="nologin" v-if="!loggedin">
       <div id="loginform">
@@ -44,7 +51,7 @@
     <div id="login" v-if="loggedin">
       <div id="newupdateforms">
         <article>
-          <legend class="text">New Coin</legend>
+          <legend class="text">New Coin <font-awesome-icon id='info' :icon="['fas', 'info-circle']" size='xs' /></legend>
           <input class="new" type="text" v-model="newCoin" />
           <button class="btn" v-on:click.prevent="createCoin">ADD</button>
         </article>
@@ -77,12 +84,14 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Coin from "./components/Coin";
+import Currencies from "./components/Currencies.vue";
 export default {
   name: "App",
   components: {
     Header,
     Coin,
     Footer,
+    Currencies
   },
   data: function() {
     return {
@@ -176,7 +185,7 @@ export default {
     },
     createCoin: function() {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      const coin = { ticker: this.newCoin };
+      const coin = { ticker: this.newCoin.toUpperCase() };
       fetch(`${URL}/coins`, {
         method: "POST",
         headers: {
@@ -204,7 +213,7 @@ export default {
     editCoin: function(event) {
       const URL = this.prodURL ? this.prodURL : this.devURL;
       const ID = event.target.id;
-      const updated = { ticker: this.updateCoin };
+      const updated = { ticker: this.updateCoin.toUpperCase() };
       fetch(`${URL}/coins/${ID}`, {
         method: "PUT",
         headers: {
@@ -310,6 +319,9 @@ html {
   background-color: white;
   font-family: "Lato", sans-serif;
 }
+#info:hover {
+  cursor: pointer;
+}
 #coins {
   display: flex;
   justify-content: space-between;
@@ -360,6 +372,54 @@ html {
   color: rgb(174, 240, 199);
   text-decoration: none;
 }
+
+/*    Modal styling */
+#modal-bg {
+    background-color: rgba(0, 0, 0, .85);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+    display: none;
+}
+#modalBox {
+    height: 50%;
+    width: 60%;
+    margin: 25vh auto;
+    background-image: linear-gradient(#455E89, #2E6F95, #1780A1, #0091AD);
+    box-shadow: 0 0 6px #892B64;
+    border-radius: 1%;
+    display: flex;
+    flex-direction: column;
+}
+#close {
+  align-self: flex-end;
+  margin: 1% 2% 0 0;
+  color: #4e3088;
+}
+#close:hover {
+  cursor: pointer;
+}
+#currencies {
+  background-color: white;
+  height: 75%;
+  width: 70%;
+  margin: auto;
+  overflow: auto;
+  border-radius: 1%;
+}
+#currenciesTitle {
+  margin: auto;
+}
+#currencies ul {
+  padding-left: 2vw;
+  color: black;
+}
+
 @media only screen and (max-width: 850px) {
   #coins {
     width: 90%;
