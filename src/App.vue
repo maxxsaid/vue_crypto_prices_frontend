@@ -376,6 +376,7 @@ html {
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
+    text-align: center;
   }
   #coins {
     width: 90%;
