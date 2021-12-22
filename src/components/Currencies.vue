@@ -1,7 +1,7 @@
 <template>
   <div id='currencies'>
     <ul v-for="currency of currencies" :key="currency.name">
-        <li>{{currency.name}}</li>
+        <li>{{currency.asset_id}} <img :src='currency.url' /></li>
     </ul>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
     var ranAPI = apis[ranNum]
     Vue.axios
       .get(
-        `https://rest-sandbox.coinapi.io/v1/assets?apikey=${ranAPI}`
+        `https://rest.coinapi.io/v1/assets/icons/16?apikey=${ranAPI}`
       )
 
       .then((response) => {
