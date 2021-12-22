@@ -1,7 +1,8 @@
 <template>
   <div>
     <p>{{ this.$attrs.ticker }}</p>
-    <p>${{ Math.floor(coin.rate) }} {{ coin.asset_id_quote }}</p>
+    <p v-if="coin.rate > 1">${{ coin.rate.toFixed(2) }} {{ coin.asset_id_quote }}</p>
+    <p v-else>${{ coin.rate.toFixed(5) }} {{ coin.asset_id_quote }}</p>
   </div>
 </template>
 
