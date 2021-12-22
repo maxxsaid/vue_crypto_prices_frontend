@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header />
+
     <div id="nologin" v-if="!loggedin">
       <div id="loginform">
         <form v-on:submit.prevent="handleLogin">
