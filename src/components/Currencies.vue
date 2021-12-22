@@ -35,6 +35,11 @@ export default {
       .then((response) => {
         this.currencies = response.data;
       });
-  }
+  },
+//   computed: {
+//   sortedCurrencies: function () {
+//     return this.currencies.sort((a, b) => a.name.localeCompare(b.name))
+//   }
+// }
 };
 </script>

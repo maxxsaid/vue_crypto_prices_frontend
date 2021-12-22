@@ -2,7 +2,7 @@
   <div id="app">
     <div id='modal-bg'>
             <div id='modalBox'>
-              <font-awesome-icon id='close' :icon="['fas', 'times-circle']" />
+              <font-awesome-icon id='close' :icon="['fas', 'times']" size='lg' />
               <div id='currenciesTitle'>Currently supported currencies:</div>
               <Currencies />
             </div>
@@ -51,7 +51,7 @@
     <div id="login" v-if="loggedin">
       <div id="newupdateforms">
         <article>
-          <legend class="text">New Coin <font-awesome-icon id='info' :icon="['fas', 'info-circle']" /></legend>
+          <legend class="text">New Coin <font-awesome-icon id='info' :icon="['fas', 'info-circle']" size='xs' /></legend>
           <input class="new" type="text" v-model="newCoin" />
           <button class="btn" v-on:click.prevent="createCoin">ADD</button>
         </article>
@@ -185,7 +185,7 @@ export default {
     },
     createCoin: function() {
       const URL = this.prodURL ? this.prodURL : this.devURL;
-      const coin = { ticker: this.newCoin };
+      const coin = { ticker: this.newCoin.toUpperCase() };
       fetch(`${URL}/coins`, {
         method: "POST",
         headers: {
@@ -376,7 +376,7 @@ html {
 /*    Modal styling */
 #modal-bg {
     background-color: rgba(0, 0, 0, .85);
-    color: black;
+    color: white;
     position: fixed;
     top: 0;
     left: 0;
@@ -384,7 +384,7 @@ html {
     width: 100%;
     z-index: 1;
     overflow: auto;
-    display: block;
+    display: none;
 }
 #modalBox {
     height: 50%;
@@ -398,7 +398,11 @@ html {
 }
 #close {
   align-self: flex-end;
-  margin: 3% 3% 0 0;
+  margin: 1% 2% 0 0;
+  color: #4e3088;
+}
+#close:hover {
+  cursor: pointer;
 }
 #currencies {
   background-color: white;
@@ -406,12 +410,14 @@ html {
   width: 70%;
   margin: auto;
   overflow: auto;
+  border-radius: 1%;
 }
 #currenciesTitle {
   margin: auto;
 }
 #currencies ul {
   padding-left: 2vw;
+  color: black;
 }
 
 @media only screen and (max-width: 850px) {

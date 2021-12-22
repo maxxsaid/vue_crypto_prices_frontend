@@ -5,10 +5,10 @@ import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 import $ from 'jquery'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faInfoCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle, faTimes, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faInfoCircle, faTimesCircle)
+library.add(faInfoCircle, faTimesCircle, faTimes)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -22,3 +22,4 @@ new Vue({
 }).$mount("#app");
 
 $('#info').on('click', () => $('#modal-bg').css('display', 'block'))
+$('#close').on('click', () => $('#modal-bg').css('display', 'none'))

@@ -6,7 +6,7 @@
           <strong>curensee</strong> by
           <a href="https://max-said.netlify.app/" target="_blank">Max Said</a>
           and
-          <a href="https://github.com/tazmancooks" target="_blank">
+          <a href="https://bartholomewwebsolutions.netlify.app/" target="_blank">
             Quentin Bartholomew</a
           >
         </p>
