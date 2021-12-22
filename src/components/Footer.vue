@@ -10,6 +10,7 @@
             Quentin Bartholomew</a
           >
         </p>
+        <p class="built">Built on Ruby on Rails and Vue</p>
       </div>
     </footer>
   </div>
@@ -31,6 +32,11 @@ export default {
   right: 0px;
   margin-bottom: 0px;
   font-family: "Lato", sans-serif;
-  font-size: 1.3em;
+  font-size: 1.4em;
+  margin-top: 100px;
+}
+.built {
+  font-size: 0.6em;
+  color: rgb(151, 150, 150);
 }
 </style>

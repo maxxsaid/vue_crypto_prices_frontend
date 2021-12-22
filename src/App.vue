@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Header />
-
     <div id="nologin" v-if="!loggedin">
       <div id="loginform">
         <form v-on:submit.prevent="handleLogin">
@@ -360,5 +359,43 @@ html {
   background-position: right center; /* change the direction of the change here */
   color: rgb(174, 240, 199);
   text-decoration: none;
+}
+@media only screen and (max-width: 850px) {
+  #coins {
+    width: 90%;
+    align-content: center;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 700px) {
+  #loginform {
+    width: 80%;
+  }
+  #newupdateforms {
+    width: 90%;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
+  #coins {
+    width: 90%;
+    align-content: center;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 440px) {
+  #loginform {
+    width: 100%;
+  }
+  #title {
+    font-size: 2em;
+  }
+  #newupdateforms {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  #coins {
+    width: 100%;
+  }
 }
 </style>
