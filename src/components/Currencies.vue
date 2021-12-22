@@ -29,7 +29,7 @@ export default {
     var ranAPI = apis[ranNum]
     Vue.axios
       .get(
-        `http://rest-sandbox.coinapi.io/v1/assets?apikey=${ranAPI}`
+        `https://rest-sandbox.coinapi.io/v1/assets?apikey=${ranAPI}`
       )
 
       .then((response) => {
@@ -37,13 +37,13 @@ export default {
       });
   },
   watch: {
-    //   sortedCurrencies: function () {
-    //     return this.currencies.sort((a, b) => {
-    //     if(a.firstname < b.firstname) { return -1; }
-    //     if(a.firstname > b.firstname) { return 1; }
-    //     return 0;
-    //     })
-    //     }
+      // sortedCurrencies: function () {
+      //   return this.currencies.sort((a, b) => {
+      //   if(a.firstname < b.firstname) { return -1; }
+      //   if(a.firstname > b.firstname) { return 1; }
+      //   return 0;
+      //   })
+      //   }
     }
 };
 </script>
