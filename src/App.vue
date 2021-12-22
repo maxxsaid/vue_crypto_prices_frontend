@@ -213,7 +213,7 @@ export default {
     editCoin: function(event) {
       const URL = this.prodURL ? this.prodURL : this.devURL;
       const ID = event.target.id;
-      const updated = { ticker: this.updateCoin };
+      const updated = { ticker: this.updateCoin.toUpperCase() };
       fetch(`${URL}/coins/${ID}`, {
         method: "PUT",
         headers: {
