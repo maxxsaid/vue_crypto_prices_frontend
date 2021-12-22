@@ -36,10 +36,14 @@ export default {
         this.currencies = response.data;
       });
   },
-//   computed: {
-//   sortedCurrencies: function () {
-//     return this.currencies.sort((a, b) => a.name.localeCompare(b.name))
-//   }
-// }
+  watch: {
+    //   sortedCurrencies: function () {
+    //     return this.currencies.sort((a, b) => {
+    //     if(a.firstname < b.firstname) { return -1; }
+    //     if(a.firstname > b.firstname) { return 1; }
+    //     return 0;
+    //     })
+    //     }
+    }
 };
 </script>
