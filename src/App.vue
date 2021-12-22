@@ -3,6 +3,8 @@
     <div id='modal-bg'>
             <div id='modalBox'>
               <font-awesome-icon id='close' :icon="['fas', 'times-circle']" />
+              <div id='currenciesTitle'>Currently supported currencies:</div>
+              <Currencies />
             </div>
         </div>
     <Header />
@@ -82,12 +84,14 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Coin from "./components/Coin";
+import Currencies from "./components/Currencies.vue";
 export default {
   name: "App",
   components: {
     Header,
     Coin,
     Footer,
+    Currencies
   },
   data: function() {
     return {
@@ -394,7 +398,20 @@ html {
 }
 #close {
   align-self: flex-end;
-  margin: 3%
+  margin: 3% 3% 0 0;
+}
+#currencies {
+  background-color: white;
+  height: 75%;
+  width: 70%;
+  margin: auto;
+  overflow: auto;
+}
+#currenciesTitle {
+  margin: auto;
+}
+#currencies ul {
+  padding-left: 2vw;
 }
 
 @media only screen and (max-width: 850px) {
