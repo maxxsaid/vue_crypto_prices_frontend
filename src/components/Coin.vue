@@ -34,7 +34,7 @@ export default {
     var ranAPI = apis[ranNum]
     Vue.axios
       .get(
-        `http://rest-sandbox.coinapi.io/v1/exchangerate/${ticker}/USD?apikey=${ranAPI}`
+        `https://rest-sandbox.coinapi.io/v1/exchangerate/${ticker}/USD?apikey=${ranAPI}`
       )
 
       .then((response) => {
