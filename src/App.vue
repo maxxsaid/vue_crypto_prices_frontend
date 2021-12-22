@@ -1,5 +1,10 @@
 <template>
   <div id="app">
+    <div id='modal-bg'>
+            <div id='modalBox'>
+              <font-awesome-icon id='close' :icon="['fas', 'times-circle']" />
+            </div>
+        </div>
     <Header />
     <div id="nologin" v-if="!loggedin">
       <div id="loginform">
@@ -44,7 +49,7 @@
     <div id="login" v-if="loggedin">
       <div id="newupdateforms">
         <article>
-          <legend class="text">New Coin</legend>
+          <legend class="text">New Coin <font-awesome-icon id='info' :icon="['fas', 'info-circle']" /></legend>
           <input class="new" type="text" v-model="newCoin" />
           <button class="btn" v-on:click.prevent="createCoin">ADD</button>
         </article>
@@ -310,6 +315,9 @@ html {
   background-color: white;
   font-family: "Lato", sans-serif;
 }
+#info:hover {
+  cursor: pointer;
+}
 #coins {
   display: flex;
   justify-content: space-between;
@@ -360,6 +368,35 @@ html {
   color: rgb(174, 240, 199);
   text-decoration: none;
 }
+
+/*    Modal styling */
+#modal-bg {
+    background-color: rgba(0, 0, 0, .85);
+    color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+    display: block;
+}
+#modalBox {
+    height: 50%;
+    width: 60%;
+    margin: 25vh auto;
+    background-image: linear-gradient(#455E89, #2E6F95, #1780A1, #0091AD);
+    box-shadow: 0 0 6px #892B64;
+    border-radius: 1%;
+    display: flex;
+    flex-direction: column;
+}
+#close {
+  align-self: flex-end;
+  margin: 3%
+}
+
 @media only screen and (max-width: 850px) {
   #coins {
     width: 90%;

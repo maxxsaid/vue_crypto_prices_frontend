@@ -4,6 +4,13 @@ import router from "./router";
 import Buefy from "buefy";
 import "buefy/dist/buefy.css";
 import $ from 'jquery'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faInfoCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faInfoCircle, faTimesCircle)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(Buefy);
 
@@ -14,4 +21,4 @@ new Vue({
   render: (h) => h(App),
 }).$mount("#app");
 
-$('#coins').on('click', () => alert('hi'))
+$('#info').on('click', () => $('#modal-bg').css('display', 'block'))
