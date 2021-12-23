@@ -31,9 +31,13 @@
 ## Models
 
 - Coin
-  - coin code
-  - coin price
-  - coin icon
+  - Coin code
+  - Coin price
+  - Coin icon
+
+- Currencies
+  - Asset_id
+  - URL
 
 ## Created by
 
