@@ -109,7 +109,7 @@ export default {
       createUsername: "",
       createPassword: "",
       devURL: "http://localhost:3000",
-      prodURL: "https://qb-ms-ruby-rails-backend.herokuapp.com",
+      prodURL: "https://currensee-backend-0dd47f994e6d.herokuapp.com",
       user: null,
       token: null,
       coins: [],
